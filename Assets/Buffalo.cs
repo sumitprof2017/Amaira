@@ -23,6 +23,20 @@ public class Buffalo : Enemy
         transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
     }
 
+   /* private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (IsOnLayer(collision.gameObject, wallLayer))
+        {
+            Debug.Log($"Buffalo hit a wall: {collision.gameObject.name}");
+            Flip();
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+
+            TakeDamage(35f);
+        }
+    }*/
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the buffalo collided with the player

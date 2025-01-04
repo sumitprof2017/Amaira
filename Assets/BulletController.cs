@@ -9,10 +9,15 @@ public class BulletController : MonoBehaviour
 
     public Queue<GameObject> bulletQueue = new Queue<GameObject>();
     public static BulletController instance;
+    [SerializeField]
+    Sprite defaultSprite;
+    private SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        spriteRenderer = GetComponent<SpriteRenderer>();
         for (int i = 0; i < 10; i++)
         {
             Instantiate(Bullet);
@@ -43,16 +48,26 @@ public class BulletController : MonoBehaviour
         }
     }
     
-    public void ShootBulletFromEnemyToPlayer(Transform firePoint, Transform playerTransform,float scaleMultiplier = 2)
+    public void ShootBulletFromEnemyToPlayer(Transform firePoint, Transform playerTransform,float scaleMultiplier = 2, Sprite newSprite = null)
     {
         if (bulletQueue.Count > 0)
         {
             GameObject bullet = bulletQueue.Dequeue();
+            int newLayer = LayerMask.NameToLayer("EnemyBullet");
+            bullet.layer = newLayer;
             bullet.transform.position = firePoint.position; // Set bullet position
             bullet.transform.rotation = firePoint.rotation; // Match fire point rotation
             bullet.SetActive(true); // Activate the bullet
-           // bullet.transform.localScale = bullet.transform.localScale* scaleMultiplier;
-           Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            //sprite related stuffs
+            SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+            if (spriteRenderer == null) return;
+
+            // If no sprite is provided, use the default sprite
+            spriteRenderer.sprite = newSprite != null ? newSprite : defaultSprite;
+
+
+            // bullet.transform.localScale = bullet.transform.localScale* scaleMultiplier;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 // Calculate direction from fire point to player
@@ -73,15 +88,12 @@ public class BulletController : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         bullet.SetActive(false); // Deactivate the bullet
-       // bullet.gameObject.LeanScale(new Vector3(0.35f, 0.35f, 0.35f), 0f);
+        int newLayer = LayerMask.NameToLayer("Bullet");                                    // bullet.transform.localScale = bullet.transform.localScale* scaleMultiplier;
+        bullet.layer = newLayer;
+        // bullet.gameObject.LeanScale(new Vector3(0.35f, 0.35f, 0.35f), 0f);
         bulletQueue.Enqueue(bullet); // Return it to the pool
     }
-    public void RestoreBulletFunction(GameObject bullet,float delay)
-    {
-        StartCoroutine(RestoreBullet(bullet, delay)); // Deactivates after 6 seconds
-
-
-    }    // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         
