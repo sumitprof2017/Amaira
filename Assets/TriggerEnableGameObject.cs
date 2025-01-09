@@ -22,6 +22,7 @@ public class TriggerEnableGameObject : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        print("trigger is called"+gameObject.name);
         if (enemyToActivate != null) {
         
         enemyToActivate.SetActive(true);

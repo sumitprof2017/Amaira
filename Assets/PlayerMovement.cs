@@ -36,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false; // Controls dash cooldown
     private float dashingTime = 0.2f;
     public TrailRenderer trailRenderer;
+
+    //shoot related stuffs
+    [SerializeField]
+    Sprite playerBulletSprite;
     void Update()
     {
         if (!isDashing)

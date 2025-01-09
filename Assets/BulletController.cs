@@ -18,14 +18,14 @@ public class BulletController : MonoBehaviour
     {
         instance = this;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
             Instantiate(Bullet);
             bulletQueue.Enqueue(Bullet);
         }
     }
     public float bulletSpeed = 20f;
-    public void ShootBullet(Transform FirePoint,bool isFacingRight)
+    public void ShootBullet(Transform FirePoint,bool isFacingRight, Sprite newSprite = null)
     {
         if (bulletQueue.Count > 0)
         {
@@ -33,6 +33,12 @@ public class BulletController : MonoBehaviour
             bullet.transform.position = FirePoint.position; // Set bullet position
             bullet.transform.rotation = FirePoint.rotation; // Match fire point rotation
             bullet.SetActive(true); // Activate the bullet
+
+            SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+            if (spriteRenderer == null) return;
+
+            // If no sprite is provided, use the default sprite
+            spriteRenderer.sprite = newSprite != null ? newSprite : defaultSprite;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
@@ -90,8 +96,12 @@ public class BulletController : MonoBehaviour
         bullet.SetActive(false); // Deactivate the bullet
         int newLayer = LayerMask.NameToLayer("Bullet");                                    // bullet.transform.localScale = bullet.transform.localScale* scaleMultiplier;
         bullet.layer = newLayer;
+        bullet.GetComponent<SpriteRenderer>().sprite = defaultSprite;
+        if (!bulletQueue.Contains(bullet)) { 
+            bulletQueue.Enqueue(bullet);
+        }
         // bullet.gameObject.LeanScale(new Vector3(0.35f, 0.35f, 0.35f), 0f);
-        bulletQueue.Enqueue(bullet); // Return it to the pool
+         // Return it to the pool
     }
     // Update is called once per frame
     void Update()
