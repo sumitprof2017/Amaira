@@ -26,16 +26,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = true; // Tracks if the player is on the ground
     private Rigidbody2D rb; // Reference to the Rigidbody2D
     public int maxJumps = 2;
-    private int jumpCount = 0;
+    public int jumpCount = 0;
     // Update is called once per frame
 
     //dash related stuffs
-    public float dashForce = 20f; // Force applied for dashing
-    public float dashCooldown = 1f; // Cooldown time for dashing
-    private bool canDash = true; // Controls dash cooldown
-    private bool isDashing = false; // Controls dash cooldown
-    private float dashingTime = 0.2f;
-    public TrailRenderer trailRenderer;
+  
 
     //shoot related stuffs
     [SerializeField]
@@ -62,8 +57,11 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.aKey.wasPressedThisFrame)
         {
             BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
+        } if (Keyboard.current.cKey.wasPressedThisFrame)
+        {
+            StartCoroutine(Shield());
         }
- 
+
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame &&  jumpCount < maxJumps)
         {
@@ -72,25 +70,29 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.leftShiftKey.wasPressedThisFrame && canDash)
         {
             StartCoroutine(Dash());
-           // Dash();
         }
     }
+
     public LayerMask enemyLayer;
-   /* private void OnCollisionEnter2D(Collision2D collision)
+    public  void Shoot()
     {
-        // Check if the buffalo collided with the player
-        if (IsOnLayer(collision.gameObject, enemyLayer))
-        {
-            Debug.Log($"Enemy layer is");
-            SceneManager.LoadScene("FirstScene");
-        }
-    }*/
+        BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
+
+    }
     private bool IsOnLayer(GameObject obj, LayerMask layerMask)
     {
         return ((1 << obj.layer) & layerMask) != 0;
     }
-
-    private IEnumerator Dash()
+    [Header("DashRelated")]
+    [SerializeField]
+    GameObject electricity;
+    public float dashForce = 20f; // Force applied for dashing
+    public float dashCooldown = 1f; // Cooldown time for dashing
+    public bool canDash = true; // Controls dash cooldown
+    private bool isDashing = false; // Controls dash cooldown
+    private float dashingTime = 0.2f;
+    public TrailRenderer trailRenderer;
+    public IEnumerator Dash()
     {
 
         canDash = false;
@@ -99,7 +101,10 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashForce, 0f);
         trailRenderer.emitting = true;
+        electricity.SetActive(true);
         yield return new WaitForSeconds(dashingTime);
+        electricity.SetActive(false);
+
         trailRenderer.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
@@ -107,32 +112,32 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
-  /*  void Dash()
+    [Header("ShieldRelatedStuffs")]
+    [SerializeField]
+    GameObject shieldObject;
+    [SerializeField]
+    float waitTimeForShield;
+    private IEnumerator Shield()
     {
-        // Calculate the dash direction based on facing direction
-        float dashDirection = facingRight ? 1f : -1f;
+        GetComponent<PlayerMovement>().enabled = false;
 
-        // Determine the new position
-        Vector3 dashPosition = transform.position + new Vector3(dashDirection * dashForce, 0, 0);
+        int invulnerabilityLayer = LayerMask.NameToLayer("Invulnerability");
+        gameObject.layer = invulnerabilityLayer;
+        shieldObject.SetActive(true);
+        yield return new WaitForSeconds(dashCooldown);
+        int playerLayer = LayerMask.NameToLayer("Player");
+        gameObject.layer = playerLayer;
+        shieldObject.SetActive(false);
+        GetComponent<PlayerMovement>().enabled = true;
 
-        // Set the new position directly
-        transform.position = dashPosition;
+    }
 
-        // Start dash cooldown
-        canDash = false;
-        Invoke(nameof(ResetDash), dashCooldown); // Reset dash after cooldown
-    }*/
-   /* void Dash()
+    public void DashFunc()
     {
-        isDashing = true;
-        // Apply an instantaneous force in the direction the player is facing
-        float dashDirection = facingRight ? 1f : -1f;
-        rb.AddForce(new Vector2(dashDirection * dashForce, 0), ForceMode2D.Impulse);
+        StartCoroutine(Dash());
 
-        // Start dash cooldown
-        canDash = false;
-        Invoke(nameof(ResetDash), dashCooldown); // Reset dash after cooldown
-    }*/
+    }
+
 
     void ResetDash()
     {
@@ -140,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
 
         canDash = true;
     }
-    void Jump()
+    public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply jump force
         jumpCount++;
