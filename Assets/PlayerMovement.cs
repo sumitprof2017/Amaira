@@ -153,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("gameobject name" + collision.gameObject.name); 
+     //   print("gameobject name" + collision.gameObject.name); 
         if (collision.gameObject.CompareTag("Ground")  || collision.gameObject.CompareTag("Wall"))
         {
             jumpCount = 0;
