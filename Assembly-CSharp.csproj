@@ -117,6 +117,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline2d.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier2d.cs" />
+    <Compile Include="Assets\ForceField.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />

@@ -61,6 +61,10 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(Shield());
         }
+        if (Keyboard.current.fKey.wasPressedThisFrame && forceFieldCoolDown)
+        {
+            StartCoroutine(ForceField());
+        }
 
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame &&  jumpCount < maxJumps)
@@ -132,6 +136,28 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    [Header("ForceFieldRelatedStuffs")]
+    [SerializeField]
+    GameObject forceFieldObject;
+    [SerializeField]
+    float waitTimeForForceField;
+    bool forceFieldCoolDown = true;
+    private IEnumerator ForceField()
+    {
+        forceFieldCoolDown = false;
+        int invulnerabilityLayer = LayerMask.NameToLayer("Invulnerability");
+        gameObject.layer = invulnerabilityLayer;
+        forceFieldObject.SetActive(true);
+        yield return new WaitForSeconds(waitTimeForForceField);
+        int playerLayer = LayerMask.NameToLayer("Player");
+        gameObject.layer = playerLayer;
+        forceFieldObject.SetActive(false);
+        yield return new WaitForSeconds(waitTimeForForceField);
+        forceFieldCoolDown = true;
+
+
+    }
+
     public void DashFunc()
     {
         StartCoroutine(Dash());
@@ -153,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-     //   print("gameobject name" + collision.gameObject.name); 
+        print("gameobject name" + collision.gameObject.name); 
         if (collision.gameObject.CompareTag("Ground")  || collision.gameObject.CompareTag("Wall"))
         {
             jumpCount = 0;

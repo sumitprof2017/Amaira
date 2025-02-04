@@ -57,6 +57,6 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log($"{gameObject.name} has died.");
-        Destroy(gameObject);
+       // Destroy(gameObject);
     }
 }

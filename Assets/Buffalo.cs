@@ -6,7 +6,7 @@ public class Buffalo : Enemy
 {
     [Header("Movement Settings")]
     public float speed = 5f;
-    public LayerMask wallLayer; // Layer for the player
+    public LayerMask wallLayer,forceFieldLayer; // Layer for the player
     private bool movingRight = true;
 
     private void Update()
@@ -40,7 +40,7 @@ public class Buffalo : Enemy
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the buffalo collided with the player
-        if (IsOnLayer(collision.gameObject, wallLayer))
+        if (IsOnLayer(collision.gameObject, wallLayer)  || IsOnLayer(collision.gameObject, forceFieldLayer))
         {
             Debug.Log($"Buffalo hit a wall: {collision.gameObject.name}");
             Flip();
