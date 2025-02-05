@@ -6,6 +6,7 @@ public abstract class Friend : MonoBehaviour
 {
     public float health = 100f;
 
+    public AudioClip friendlyBgClip;
     // Common method for taking damage
     public virtual void TakeDamage(float damage)
     {

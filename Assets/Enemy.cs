@@ -7,6 +7,9 @@ public abstract class Enemy : MonoBehaviour
     public float health = 100f;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
+
+    [Header("AudioClips")]
+    public AudioClip audioClipForDeath,audioCliptoAttack;
     public void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

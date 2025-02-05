@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-public class PlayerMovement : MonoBehaviour
+
+public class PlayerMovementForTutorial : MonoBehaviour
 {
     // Start is called before the first frame update
     Vector2 moveVector;
-    public float moveSpeed=8f;
+    public float moveSpeed = 8f;
     private bool facingRight = true;
 
     public Transform bulletShootPosition;
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public void InputPlayer(InputAction.CallbackContext context)
     {
         moveVector = context.ReadValue<Vector2>();
+        print("vector value is"+moveVector.x);
     }
     //jump
 
@@ -30,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
 
     //dash related stuffs
-  
+
 
     //shoot related stuffs
     [SerializeField]
@@ -58,7 +60,8 @@ public class PlayerMovement : MonoBehaviour
         {
             BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
             AudioController.instance.PlayShootAudio();
-        } if (Keyboard.current.cKey.wasPressedThisFrame)
+        }
+        if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             StartCoroutine(Shield());
         }
@@ -68,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame &&  jumpCount < maxJumps)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && jumpCount < maxJumps)
         {
             Jump();
             AudioController.instance.PlayJumpAudio();
@@ -83,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public LayerMask enemyLayer;
-    public  void Shoot()
+    public void Shoot()
     {
         BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
 
@@ -110,11 +113,11 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashForce, 0f);
         trailRenderer.emitting = true;
-        if(electricity != null)
-        electricity.SetActive(true);
+        if (electricity != null)
+            electricity.SetActive(true);
         yield return new WaitForSeconds(dashingTime);
         if (electricity != null)
-        electricity.SetActive(false);
+            electricity.SetActive(false);
 
         trailRenderer.emitting = false;
         rb.gravityScale = originalGravity;
@@ -186,8 +189,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("gameobject name" + collision.gameObject.name); 
-        if (collision.gameObject.CompareTag("Ground")  || collision.gameObject.CompareTag("Wall"))
+        print("gameobject name" + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
         {
             jumpCount = 0;
         }

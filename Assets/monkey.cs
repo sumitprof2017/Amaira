@@ -17,17 +17,17 @@ public class monkey : Enemy
     {
 
     }
-  /*  private void OnTriggerEnter2D(Collider2D collision)
-    {
-        rb.AddForce(new Vector2(0, forceY), ForceMode2D.Impulse);
-        if (letMonkeyAttack)
-            Shoot();
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
-        {
+    /*  private void OnTriggerEnter2D(Collider2D collision)
+      {
+          rb.AddForce(new Vector2(0, forceY), ForceMode2D.Impulse);
+          if (letMonkeyAttack)
+              Shoot();
+          if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+          {
 
-            TakeDamage(50f);
-        }
-    }*/
+              TakeDamage(50f);
+          }
+      }*/
     private void OnCollisionEnter2D(Collision2D collision)
     {
         rb.AddForce(new Vector2(0, forceY), ForceMode2D.Impulse);
@@ -45,8 +45,12 @@ public class monkey : Enemy
     public Sprite bananaImage;
     public void Shoot()
     {
-        if(Vector2.Distance(firePosition.position, player.transform.position)<5)
-        BulletController.instance.ShootBulletFromEnemyToPlayer(firePosition, player.transform, 2, bananaImage);
+        if (Vector2.Distance(firePosition.position, player.transform.position) < 5)
+        {
+
+            AudioController.instance.PlayerEnemyAttackAudio(audioCliptoAttack);
+            BulletController.instance.ShootBulletFromEnemyToPlayer(firePosition, player.transform, 2, bananaImage);
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -58,6 +62,6 @@ public class monkey : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

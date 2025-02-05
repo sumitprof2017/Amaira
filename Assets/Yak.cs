@@ -9,6 +9,7 @@ public class Yak : Friend
     
     [SerializeField]
     Transform playerPositionOnYak;
+
     public override void Move()
     {
         gameObject.transform.position += new Vector3(moveSpeed, 0, 0);
@@ -41,6 +42,7 @@ public class Yak : Friend
     GameObject playerRef;
     void StartYakATtack(GameObject player)
     {
+        AudioController.instance.YakAttackClip(friendlyBgClip);
         player.GetComponent<PlayerMovement>().enabled = false;
         player.transform.position = playerPositionOnYak.position;
         player.transform.parent = transform;
@@ -52,6 +54,8 @@ public class Yak : Friend
     private IEnumerator EndYakAttack()
     {
         yield return new WaitForSeconds(8f);
+        AudioController.instance.PlayBgClip();
+
         playerRef.GetComponent<PlayerMovement>().enabled = true;
 
         letStartMoving = false;

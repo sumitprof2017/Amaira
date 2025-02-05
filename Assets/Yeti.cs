@@ -75,7 +75,12 @@ public class Yeti : Enemy
     public void Shoot()
     {
         if(Vector2.Distance(firePosition.position, player.transform.position) < 5)
+        {
+            AudioController.instance.PlayerEnemyAttackAudio(audioCliptoAttack);
+
             BulletController.instance.ShootBulletFromEnemyToPlayer(firePosition, player.transform,4);
+
+        }
     }
     // Update is called once per frame
 
