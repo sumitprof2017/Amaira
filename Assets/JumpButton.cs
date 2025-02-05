@@ -17,7 +17,9 @@ public class JumpButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        btnComponent.interactable = (player.jumpCount < 2);
+        if (player != null)
+        {
+            btnComponent.interactable = (player.jumpCount < 2);
+        }
     }
 }

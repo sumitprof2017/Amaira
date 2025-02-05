@@ -16,7 +16,8 @@ public class DashButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        btnComponent.interactable = (player.canDash);
+        if (player != null)
+            btnComponent.interactable = (player.canDash);
+    
     }
 }

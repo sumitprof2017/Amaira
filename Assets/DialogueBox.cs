@@ -36,6 +36,18 @@ public class DialogueBox : MonoBehaviour
 
     }
 
+    public void OnPopUpDialogueBox(string msg)
+    {
+        tmp_DialogueField.text = msg;
+        canvasForDialogue.SetActive(true);
+
+    }
+    public void DeactivateDialogueBox()
+    {
+        canvasForDialogue.SetActive(false);
+
+    }
+
     // Update is called once per frame
     void Update()
     {

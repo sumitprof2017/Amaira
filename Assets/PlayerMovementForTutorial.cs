@@ -17,10 +17,15 @@ public class PlayerMovementForTutorial : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
 
     }
+    bool initialInput = false;
     public void InputPlayer(InputAction.CallbackContext context)
     {
         moveVector = context.ReadValue<Vector2>();
-        print("vector value is"+moveVector.x);
+        if (!initialInput) {
+            initialInput = true;
+            DialogueBox.instance.DeactivateDialogueBox();
+        }
+
     }
     //jump
 
@@ -58,6 +63,8 @@ public class PlayerMovementForTutorial : MonoBehaviour
 
         if (Keyboard.current.aKey.wasPressedThisFrame)
         {
+            DialogueBox.instance.DeactivateDialogueBox();
+
             BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
             AudioController.instance.PlayShootAudio();
         }
@@ -106,6 +113,7 @@ public class PlayerMovementForTutorial : MonoBehaviour
     public TrailRenderer trailRenderer;
     public IEnumerator Dash()
     {
+        DialogueBox.instance.DeactivateDialogueBox();
 
         canDash = false;
         isDashing = true;
@@ -183,6 +191,8 @@ public class PlayerMovementForTutorial : MonoBehaviour
     }
     public void Jump()
     {
+        DialogueBox.instance.DeactivateDialogueBox();
+
         rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply jump force
         jumpCount++;
     }
