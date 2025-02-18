@@ -97,9 +97,11 @@
     <Compile Include="Assets\Buffalo.cs" />
     <Compile Include="Assets\LeanTween\Testing\Scripts\LeanPool.cs" />
     <Compile Include="Assets\Ingredient.cs" />
+    <Compile Include="Assets\StateRelatedScripts\AirState.cs" />
     <Compile Include="Assets\PlayerPowerUpManager.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingSequencer.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
+    <Compile Include="Assets\TutorialController.cs" />
     <Compile Include="Assets\SlidingPuzzle-main\Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\PlayerMovementForTutorial.cs" />
     <Compile Include="Assets\LeanTween\Testing\PerformanceTests.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
     <Compile Include="Assets\SortingLayerController.cs" />
+    <Compile Include="Assets\TriggerForTutorial.cs" />
     <Compile Include="Assets\PowerUpSpawner.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingSceneSwitching.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing246.cs" />
@@ -115,6 +118,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
+    <Compile Include="Assets\StateRelatedScripts\State.cs" />
     <Compile Include="Assets\RollingBoulder.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline2d.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
@@ -135,6 +139,7 @@
     <Compile Include="Assets\LeanTween\Testing\TestingMaxTweens.cs" />
     <Compile Include="Assets\PowerUpFactory.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingIssue.cs" />
+    <Compile Include="Assets\StateRelatedScripts\GroundState.cs" />
     <Compile Include="Assets\Invisibilty.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\LeanTween\Testing\FollowingTests.cs" />

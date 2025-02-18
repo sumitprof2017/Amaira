@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     Vector2 moveVector;
-    public float moveSpeed=8f;
+    public float moveSpeed = 8f;
     private bool facingRight = true;
 
     public Transform bulletShootPosition;
@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     {
         moveVector = context.ReadValue<Vector2>();
     }
+
+   
     //jump
 
     public float jumpForce = 10f; // Force applied for jumping
@@ -30,14 +32,146 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
 
     //dash related stuffs
-  
 
-    //shoot related stuffs
+    //new state machine related
     [SerializeField]
     Sprite playerBulletSprite;
-    void Update()
+
+    //State Related
+    enum PlayerState { Idle, Running, Airborne, Dashing, Shooting }
+    PlayerState state;
+    bool stateComplete;
+    void UpdateState()
     {
-        if (!isDashing)
+        switch (state)
+        {
+            case PlayerState.Idle:
+                UpdateIdle();
+                break;
+            case PlayerState.Running:
+                UpdateRun();
+
+                break;
+            case PlayerState.Airborne:
+                UpdateAirBorne();
+
+                break;  
+            case PlayerState.Shooting:
+                UpdateShooting();
+
+                break; 
+            
+            case PlayerState.Dashing:
+                UpdateDash();
+
+                break;
+
+        }
+    }
+
+
+
+    void SelectState()
+    {
+        stateComplete = false;
+        if (isDashing)
+        {
+            state = PlayerState.Dashing;
+        }
+        else if (isShooting)
+        {
+            state = PlayerState.Shooting;
+        }
+        else if (!isGrounded)
+        {
+            state = PlayerState.Airborne;
+        }
+        else if (moveVector.x != 0)
+        {
+            state = PlayerState.Running;
+        }
+        else
+        {
+            state = PlayerState.Idle;
+        }
+
+    }
+
+
+    void UpdateIdle()
+    {
+
+    }
+
+
+    void UpdateRun()
+    {
+
+    }
+
+    void UpdateAirBorne()
+    {
+
+    }
+
+    void UpdateDash()
+    {
+
+    }
+
+    void UpdateShooting()
+    {
+        // Prevent movement while shooting
+        if (isShooting)
+        {
+            if (canShoot)
+            {
+                canShoot = false;
+                BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
+                AudioController.instance.PlayShootAudio();
+                StartCoroutine(ShootCooldown());
+            }
+        }
+    }
+    private IEnumerator ShootCooldown()
+    {
+        yield return new WaitForSeconds(shootCooldown);
+        isShooting = false;
+        canShoot = true;
+        stateComplete = true;
+    }
+
+
+    //shoot related stuffs
+
+
+    void Update()
+        {
+        if (stateComplete)
+        {
+            SelectState();
+        }
+              UpdateState();
+            if (!isDashing)
+            {
+                Vector2 movement = new Vector3(moveVector.x, 0);
+                movement.Normalize();
+                transform.Translate(movement * moveSpeed * Time.deltaTime);
+
+                if (movement.x > 0 && !facingRight)
+                {
+                    Flip();
+                }
+                else if (movement.x < 0 && facingRight)
+                {
+                    Flip();
+                }
+            }
+
+        HandleInput();
+
+            //old code renewed
+      /*  if (!isDashing)
         {
             Vector2 movement = new Vector3(moveVector.x, 0);
             movement.Normalize();
@@ -58,7 +192,8 @@ public class PlayerMovement : MonoBehaviour
         {
             BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
             AudioController.instance.PlayShootAudio();
-        } if (Keyboard.current.cKey.wasPressedThisFrame)
+        }
+        if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             StartCoroutine(Shield());
         }
@@ -68,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame &&  jumpCount < maxJumps)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && jumpCount < maxJumps)
         {
             Jump();
             AudioController.instance.PlayJumpAudio();
@@ -79,11 +214,46 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dash());
             AudioController.instance.PlayDashAudio();
 
+        }*/
+    }
+
+    void HandleInput()
+    {
+        if (Keyboard.current.aKey.wasPressedThisFrame && canShoot)
+        {
+            isShooting = true;
+            stateComplete = true;
+        }
+
+        if (Keyboard.current.cKey.wasPressedThisFrame)
+        {
+            StartCoroutine(Shield());
+        }
+
+        if (Keyboard.current.fKey.wasPressedThisFrame && forceFieldCoolDown)
+        {
+            StartCoroutine(ForceField());
+        }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && jumpCount < maxJumps)
+        {
+            Jump();
+            AudioController.instance.PlayJumpAudio();
+        }
+
+        if (Keyboard.current.leftShiftKey.wasPressedThisFrame && canDash)
+        {
+            StartCoroutine(Dash());
+            AudioController.instance.PlayDashAudio();
         }
     }
 
     public LayerMask enemyLayer;
-    public  void Shoot()
+
+    private bool isShooting = false;
+    private float shootCooldown = 0.05f;
+    private bool canShoot = true;
+    public void Shoot()
     {
         BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
 
@@ -110,17 +280,19 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashForce, 0f);
         trailRenderer.emitting = true;
-        if(electricity != null)
-        electricity.SetActive(true);
+        if (electricity != null)
+            electricity.SetActive(true);
         yield return new WaitForSeconds(dashingTime);
         if (electricity != null)
-        electricity.SetActive(false);
+            electricity.SetActive(false);
 
         trailRenderer.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+        stateComplete = true;
+
     }
 
     [Header("ShieldRelatedStuffs")]
@@ -182,14 +354,20 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply jump force
         jumpCount++;
+        isGrounded = false;
+        stateComplete = true;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("gameobject name" + collision.gameObject.name); 
-        if (collision.gameObject.CompareTag("Ground")  || collision.gameObject.CompareTag("Wall"))
+        print("gameobject name" + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
         {
             jumpCount = 0;
+            isGrounded = true;
+            stateComplete = true;
+
         }
         if (IsOnLayer(collision.gameObject, enemyLayer))
         {
