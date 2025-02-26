@@ -64,6 +64,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
     <Compile Include="Assets\PowerUp.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
+    <Compile Include="Assets\Scriptss\ScriptableObjects\PlayerDetailsSO.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
     <Compile Include="Assets\SpeedBoost.cs" />
     <Compile Include="Assets\DialogueBox.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\TriggerForTutorial.cs" />
     <Compile Include="Assets\PowerUpSpawner.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingSceneSwitching.cs" />
+    <Compile Include="Assets\TriggerPlayerDataSave.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing246.cs" />
     <Compile Include="Assets\BackGroundController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
@@ -134,13 +136,16 @@
     <Compile Include="Assets\DashButton.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
     <Compile Include="Assets\PowerUp\HealthBoost.cs" />
+    <Compile Include="Assets\Scriptss\PlatforMovement.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
+    <Compile Include="Assets\DifficultyManager.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingMaxTweens.cs" />
     <Compile Include="Assets\PowerUpFactory.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingIssue.cs" />
     <Compile Include="Assets\StateRelatedScripts\GroundState.cs" />
     <Compile Include="Assets\Invisibilty.cs" />
+    <Compile Include="Assets\Singletons\MainMenuController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\LeanTween\Testing\FollowingTests.cs" />
     <Compile Include="Assets\Bullet.cs" />

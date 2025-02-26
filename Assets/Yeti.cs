@@ -20,7 +20,7 @@ public class Yeti : Enemy
     {
         // Move in the current direction
         float direction = movingRight ? 1 : -1;
-        transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * direction * speed * Time.deltaTime * difficultyMultiplier);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -67,7 +67,7 @@ public class Yeti : Enemy
         {
             Shoot();
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2/difficultyMultiplier);
 
         }
     }

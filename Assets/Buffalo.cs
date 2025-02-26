@@ -20,7 +20,7 @@ public class Buffalo : Enemy
     {
         // Move in the current direction
         float direction = movingRight ? 1 : -1;
-        transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * direction * speed * Time.deltaTime * difficultyMultiplier);
     }
 
    /* private void OnTriggerEnter2D(Collider2D collision)

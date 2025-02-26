@@ -30,7 +30,7 @@ public class monkey : Enemy
       }*/
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.AddForce(new Vector2(0, forceY), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(0, forceY/difficultyMultiplier), ForceMode2D.Impulse);
         if (letMonkeyAttack)
             Shoot();
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))

@@ -10,6 +10,8 @@ public abstract class Enemy : MonoBehaviour
 
     [Header("AudioClips")]
     public AudioClip audioClipForDeath,audioCliptoAttack;
+
+    public float difficultyMultiplier;
     public void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
