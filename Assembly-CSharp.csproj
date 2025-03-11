@@ -60,6 +60,8 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.31f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scriptss\ScriptableObjects\HealthDecreaseEventSO.cs" />
+    <Compile Include="Assets\GameManagerMomoMania.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingOptionalCancel.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
     <Compile Include="Assets\PowerUp.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
     <Compile Include="Assets\SpeedBoost.cs" />
     <Compile Include="Assets\DialogueBox.cs" />
+    <Compile Include="Assets\PowerUpS\PowerUpFactory.cs" />
     <Compile Include="Assets\Yak.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingIssue2.cs" />
@@ -78,7 +81,7 @@
     <Compile Include="Assets\TriggerEnableGameObject.cs" />
     <Compile Include="Assets\RollingBoulder1.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
-    <Compile Include="Assets\Invulnurability.cs" />
+    <Compile Include="Assets\HealthController.cs" />
     <Compile Include="Assets\monkey.cs" />
     <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="Assets\TouchToAlive.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingRotate.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing243.cs" />
+    <Compile Include="Assets\PlayerHealthController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
     <Compile Include="Assets\AudioController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
@@ -136,18 +140,18 @@
     <Compile Include="Assets\DashButton.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
     <Compile Include="Assets\PowerUp\HealthBoost.cs" />
+    <Compile Include="Assets\PowerUpS\Invulnurability.cs" />
     <Compile Include="Assets\Scriptss\PlatforMovement.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\DifficultyManager.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingMaxTweens.cs" />
-    <Compile Include="Assets\PowerUpFactory.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingIssue.cs" />
     <Compile Include="Assets\StateRelatedScripts\GroundState.cs" />
-    <Compile Include="Assets\Invisibilty.cs" />
     <Compile Include="Assets\Singletons\MainMenuController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\LeanTween\Testing\FollowingTests.cs" />
+    <Compile Include="Assets\PowerUpS\Invisibilty.cs" />
     <Compile Include="Assets\Bullet.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplines.cs" />

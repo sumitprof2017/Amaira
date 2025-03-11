@@ -16,7 +16,10 @@ public class TriggerPlayerDataSave : MonoBehaviour
             
             playerDetailSo.sceneName = SceneManager.GetActiveScene().name;
             playerDetailSo.checkpointNumber = checkpointNumber;
-
+            if (gameObject.transform.GetChild(0) != null)
+            {
+                playerDetailSo.checkpointPosition = gameObject.transform.GetChild(0).transform.position;
+            }
             Debug.Log($"Checkpoint {checkpointNumber} saved in {playerDetailSo.sceneName}");
         }
     }

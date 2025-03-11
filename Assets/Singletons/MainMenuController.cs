@@ -1,19 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public PlayerDetailsSO playerDetailSo; // Reference to the ScriptableObject
+
+    GameObject canvasGameObject;
+
+    string currentSceneName;
     void Start()
     {
-        
+        currentSceneName = SceneManager.GetActiveScene().name;
+        playerDetailSo.sceneName = currentSceneName;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ContinueGame()
+    {
+        if (playerDetailSo == null || playerDetailSo.sceneName.Equals("")) return;
+        if (Camera.main != null)
+        {
+            Camera.main.gameObject.SetActive(false);
+        }
+        playerDetailSo.isContinueButtonClicked = true;
+        // Load the scene additively
+        SceneManager.LoadScene(playerDetailSo.sceneName);
+    }
+
+    public void StartGame(string Scename)
+    {
+        if (Camera.main != null)
+        {
+            Camera.main.gameObject.SetActive(false);
+        }
+
+        // Load the scene additively
+        SceneManager.LoadScene(Scename);
     }
 
     public void QuitGame()

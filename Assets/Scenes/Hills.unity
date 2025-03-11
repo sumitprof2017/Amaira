@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd3a6c026378f24881e959081e2dbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointNumber: 0
+  checkpointNumber: 1
   playerDetailSo: {fileID: 11400000, guid: 9e8fe923b56841c448c79e290b1cf3c2, type: 2}
 --- !u!61 &66118663
 BoxCollider2D:
@@ -5618,7 +5618,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &848028103
 MonoBehaviour:

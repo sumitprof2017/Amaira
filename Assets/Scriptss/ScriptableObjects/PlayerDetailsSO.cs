@@ -8,6 +8,7 @@ public class PlayerDetailsSO : ScriptableObject
     // Start is called before the first frame update
     public string sceneName; 
     public int checkpointNumber;
-    public string playerDress;
+    public string playerSkin;
     public Vector3 checkpointPosition;
+    public bool isContinueButtonClicked;
 }

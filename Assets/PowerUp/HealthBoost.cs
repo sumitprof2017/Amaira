@@ -11,11 +11,11 @@ public class HealthBoost : PowerUp
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<PlayerMovement>() != null)
+        if (collision.gameObject.CompareTag("Player"))
         {
-         gameObject.SetActive(false);
-            Apply(collision.GetComponent<PlayerMovement>());
+            gameObject.SetActive(false);
 
+            collision.gameObject.GetComponent<PlayerPowerUpManager>().IncreaseHealth();
         }
     }
     public override string GetPowerUpName()

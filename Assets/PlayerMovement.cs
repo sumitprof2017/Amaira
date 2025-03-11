@@ -12,13 +12,35 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform bulletShootPosition;
 
-    
-    public PlayerDetailsSO playerDetailsSO;
+    //Scriptable Object related
+    public HealthDecreaseEventSO healthEventSo;
+
+    [SerializeField]
+    Animator animatorAmaria;
+    public int health;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
+        health = 3;
+    }
+
+    private void OnEnable()
+    {
+        healthEventSo.OnHealthDecrease += RespondToHealthDecrease;
+    }
+
+
+    private void OnDisable()
+    {
+        healthEventSo.OnHealthDecrease -= RespondToHealthDecrease;
 
     }
+
+    private void RespondToHealthDecrease(int currentHealth, bool isHealthDecreased)
+    {
+        Debug.Log("Script1: Health Decreased!");
+    }
+
     public void InputPlayer(InputAction.CallbackContext context)
     {
         moveVector = context.ReadValue<Vector2>();
@@ -103,17 +125,28 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateIdle()
     {
-
+      //  animatorAmaria.CrossFade("Walk",0.1f);
     }
 
 
     void UpdateRun()
     {
+        //animatorAmaria.CrossFade("Walk", 0.1f);
 
     }
 
     void UpdateAirBorne()
     {
+        print("jump is called");
+      //  animatorAmaria.CrossFade("Jump", 0.1f);
+
+    }
+
+
+    void ResetAnimationToWalk()
+    {
+        animatorAmaria.SetFloat("y", 0);
+        animatorAmaria.SetBool("shoot", false);
 
     }
 
@@ -129,6 +162,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canShoot)
             {
+                animatorAmaria.SetBool("shoot", true);
+                Invoke(nameof(ResetAnimationToWalk), 0.5f);
+
                 canShoot = false;
                 BulletController.instance.ShootBullet(bulletShootPosition, facingRight);
                 AudioController.instance.PlayShootAudio();
@@ -240,6 +276,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame && jumpCount < maxJumps)
         {
+            animatorAmaria.SetFloat("y", 2);
+            Invoke(nameof(ResetAnimationToWalk), 0.7f);
+
+
             Jump();
             AudioController.instance.PlayJumpAudio();
         }
@@ -375,10 +415,13 @@ public class PlayerMovement : MonoBehaviour
         if (IsOnLayer(collision.gameObject, enemyLayer))
         {
             Debug.Log($"Enemy layer is");
-            SceneManager.LoadScene("FirstScene");
+            health--;
+
+            healthEventSo.InvokeEvent(health,true);
+           // SceneManager.LoadScene("FirstScene");
         }
     }
-
+        
     void Flip()
     {
         facingRight = !facingRight;

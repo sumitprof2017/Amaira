@@ -28,7 +28,7 @@ public class PlayerPowerUpManager : MonoBehaviour
         StartCoroutine(InvulnerabilityPwerUpCoroutine(player, 5f, "Invulnerability"));
     }
 
-    private IEnumerator InvulnerabilityPwerUpCoroutine(GameObject player,float duration,string layerName)
+    public IEnumerator InvulnerabilityPwerUpCoroutine(GameObject player,float duration,string layerName)
     {
         int invulnerabilityLayer = LayerMask.NameToLayer(layerName);
         player.layer = invulnerabilityLayer;
@@ -37,7 +37,13 @@ public class PlayerPowerUpManager : MonoBehaviour
         player.layer = playerLayer;
 
     }
+    public void IncreaseHealth()
+    {
+       PlayerMovement player =  GetComponent<PlayerMovement>();
+        player.health++;
+        player.healthEventSo.InvokeEvent(player.health, false);
 
+    }
 
     public void InvisiblePowerUp(GameObject player)
     {
