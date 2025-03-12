@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Ingredient : MonoBehaviour
 {
     // Start is called before the first frame update
+    public string SceneName;
     void Start()
     {
         
@@ -15,7 +16,7 @@ public class Ingredient : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
 
-            SceneManager.LoadScene("FirstScene");
+            SceneManager.LoadScene(SceneName);
         }
     }
 
