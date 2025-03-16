@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4749a09ec1cbaf4681483a242eec9ce, type: 3}
   m_Name: PlayerInitialDetail
   m_EditorClassIdentifier: 
-  sceneName: Shangrila
+  sceneName: Pokhara
   checkpointNumber: 0
   playerSkin: 
   checkpointPosition: {x: 0, y: 0, z: 0}

@@ -34,7 +34,8 @@ public class RollingBoulder1 : Enemy
     {
         if (IsGrounded())
         {
-            gameObject.transform.position -= new Vector3(rollSpeed*difficultyMultiplier, 0, 0);
+           // gameObject.transform.position -= new Vector3(rollSpeed*difficultyMultiplier, 0, 0);
+            gameObject.transform.position -= new Vector3(rollSpeed*1, 0, 0);
         }
         gameObject.transform.Rotate(0,0,3f);
     }

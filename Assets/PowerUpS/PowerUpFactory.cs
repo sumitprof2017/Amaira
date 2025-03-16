@@ -34,5 +34,34 @@ public class PowerUpFactory : MonoBehaviour
         }
 
         return powerUp;
+    } 
+    
+    public  GameObject CreatePowerUpRequiedPowerUps(int powerUpIndex)
+    {
+      
+        GameObject powerUp = null;
+
+        switch (powerUpIndex)
+        {
+            case 0:
+                powerUp = Instantiate(healthPowerUp);
+                break;
+            case 1:
+                powerUp = Instantiate(speedBoost);
+                break;
+            case 2:
+                powerUp = Instantiate(invisibilty);
+                break;
+                case 3:
+                powerUp = Instantiate(invulnurable);
+                break;
+            default:
+                Debug.LogError("Unexpected random index generated.");
+                break;
+        }
+
+        return powerUp;
     }
+
+   
 }

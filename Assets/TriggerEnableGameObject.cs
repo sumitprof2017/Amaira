@@ -10,6 +10,9 @@ public class TriggerEnableGameObject : MonoBehaviour
     
     [SerializeField]
     bool  letPowerUpSpawn;
+
+    //if staticpowerup is not 0 then get staic power up
+    int staticPowerUpNo;
     void Start()
     {
         
@@ -23,6 +26,7 @@ public class TriggerEnableGameObject : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         print("trigger is called"+gameObject.name);
+        gameObject.SetActive(false);
         if (enemyToActivate != null) {
         
         enemyToActivate.SetActive(true);

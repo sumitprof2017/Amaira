@@ -11,10 +11,13 @@ public class GameManagerMomoMania : MonoBehaviour
     void Start()
     {
 
-        playerAmaira = GameObject.FindObjectOfType<PlayerMovement>().gameObject; 
-          if(playerDetailSo.checkpointPosition != Vector3.zero)
+        playerAmaira = GameObject.FindObjectOfType<PlayerMovement>().gameObject;
+
+       // print(SaveSystem.LoadPlayerData(playerDetailSo));
+
+        if (SaveSystem.LoadPlayerData(playerDetailSo) != Vector3.zero)
         {
-            playerAmaira.transform.position = playerDetailSo.checkpointPosition;
+            playerAmaira.transform.position = SaveSystem.LoadPlayerData(playerDetailSo);
         }  
     }
 

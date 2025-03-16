@@ -8,4 +8,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shangrila.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 77c018566221cbf4e86239c441476b1a
+  - enabled: 1
+    path: Assets/Scenes/MakaraScene.unity
+    guid: 30a89331eb669dc408ac05e563e63fd5
+  - enabled: 1
+    path: Assets/Scenes/MomoManaia.unity
+    guid: d9d2a18a40cf23b438d4ea5c008c7109
+  - enabled: 1
+    path: Assets/Scenes/PlatFormTest.unity
+    guid: d2f677cb76c25064dba958206f05c406
+  - enabled: 1
+    path: Assets/Scenes/Pokhara.unity
+    guid: 98be913a4e4c9904f90baa047813936d
+  - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+    guid: 9400284ddd127b048b4a1d02b41956dd
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: 541d46cd532031547953e254d8f1e3eb
   m_configObjects: {}
