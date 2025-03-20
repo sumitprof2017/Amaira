@@ -33,7 +33,9 @@ public class TriggerEnableGameObject : MonoBehaviour
         }
         if (letPowerUpSpawn)
         {
-            PowerUpSpawner.instance.SpawnPowerUps((Vector2)(powerUpSpawnPosition.transform.position));
+            PowerUpSpawner.instance.SpawnPowerUps((Vector2)(powerUpSpawnPosition.transform.position), staticPowerUpNo);
+
+          
         }
 
     }

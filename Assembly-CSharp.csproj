@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scriptss\ScriptableObjects\HealthDecreaseEventSO.cs" />
     <Compile Include="Assets\GameManagerMomoMania.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingOptionalCancel.cs" />
+    <Compile Include="Assets\CrowMovement.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
     <Compile Include="Assets\PowerUp.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
