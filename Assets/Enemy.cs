@@ -39,6 +39,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void ChangeColor()
     {
+        print("change color");
         if (spriteRenderer != null)
         {
             // Change to transparent
@@ -61,6 +62,7 @@ public abstract class Enemy : MonoBehaviour
     // Common death method
     protected virtual void Die()
     {
+        gameObject.SetActive(false);
         Debug.Log($"{gameObject.name} has died.");
        // Destroy(gameObject);
     }

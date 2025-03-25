@@ -103,6 +103,13 @@ public class BulletController : MonoBehaviour
         // bullet.gameObject.LeanScale(new Vector3(0.35f, 0.35f, 0.35f), 0f);
          // Return it to the pool
     }
+
+    public void Restorebullet(GameObject bullet)
+    {
+        bullet.SetActive(false); // Deactivate the bullet
+        bulletQueue.Enqueue(bullet);
+
+    }
     // Update is called once per frame
     void Update()
     {

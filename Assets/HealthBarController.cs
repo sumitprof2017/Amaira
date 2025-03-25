@@ -40,7 +40,7 @@ public class HealthBarController : MonoBehaviour
             Instantiate(healthIcon, gameObject.transform);
         }
 
-        Debug.Log("Script1: Health Decreased!");
+       // Debug.Log("Script1: Health Decreased!");
     }
 
     void RestartLevel()

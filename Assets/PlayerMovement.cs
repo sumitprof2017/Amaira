@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateAirBorne()
     {
-        print("jump is called");
+       // print("jump is called");
       //  animatorAmaria.CrossFade("Jump", 0.1f);
 
     }
@@ -281,7 +281,7 @@ public class PlayerMovement : MonoBehaviour
 
 
             Jump();
-            AudioController.instance.PlayJumpAudio();
+            //AudioController.instance.PlayJumpAudio();
         }
 
         if (Keyboard.current.leftShiftKey.wasPressedThisFrame && canDash)

@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class PowerUpFactory : MonoBehaviour
 {
     [Header("PowerUps")]
-    public GameObject healthPowerUp,speedBoost,invisibilty, invulnurable;
+    public GameObject healthPowerUp,speedBoost,invisibilty, invulnurable,salt;
     public  GameObject CreatePowerUp()
     {
         // Randomly choose a power-up
@@ -16,17 +16,20 @@ public class PowerUpFactory : MonoBehaviour
 
         switch (randomIndex)
         {
-            case 0:
+            case 1:
                 powerUp = Instantiate(healthPowerUp);
                 break;
-            case 1:
+            case 2:
                 powerUp = Instantiate(speedBoost);
                 break;
-            case 2:
+            case 3:
                 powerUp = Instantiate(invisibilty);
                 break;
-                case 3:
+                case 4:
                 powerUp = Instantiate(invulnurable);
+                break;
+            case 5:
+                powerUp = Instantiate(salt);
                 break;
             default:
                 Debug.LogError("Unexpected random index generated.");
@@ -43,17 +46,20 @@ public class PowerUpFactory : MonoBehaviour
 
         switch (powerUpIndex)
         {
-            case 0:
+            case 1:
                 powerUp = Instantiate(healthPowerUp);
                 break;
-            case 1:
+            case 2:
                 powerUp = Instantiate(speedBoost);
                 break;
-            case 2:
+            case 3:
                 powerUp = Instantiate(invisibilty);
                 break;
-                case 3:
+                case 4:
                 powerUp = Instantiate(invulnurable);
+                break;
+            case 5:
+                powerUp = Instantiate(salt);
                 break;
             default:
                 Debug.LogError("Unexpected random index generated.");

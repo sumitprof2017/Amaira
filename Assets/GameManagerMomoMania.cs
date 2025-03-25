@@ -17,7 +17,7 @@ public class GameManagerMomoMania : MonoBehaviour
 
         if (SaveSystem.LoadPlayerData(playerDetailSo) != Vector3.zero)
         {
-            playerAmaira.transform.position = SaveSystem.LoadPlayerData(playerDetailSo);
+         //   playerAmaira.transform.position = SaveSystem.LoadPlayerData(playerDetailSo);
         }  
     }
 

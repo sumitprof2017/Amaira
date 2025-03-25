@@ -8,10 +8,36 @@ public class Buffalo : Enemy
     public float speed = 5f;
     public LayerMask wallLayer,forceFieldLayer; // Layer for the player
     private bool movingRight = true;
+    public PlayerMovement player;
 
+    Coroutine buffaloSpeedSpike;
     private void Update()
     {
         Move();
+        if (Vector2.Distance(gameObject.transform.position, player.transform.position) < 2)
+        {
+            if(buffaloSpeedSpike == null)
+            {
+                buffaloSpeedSpike = StartCoroutine(SpeedSpike());
+
+            }
+
+        }
+    }
+
+    private IEnumerator SpeedSpike()
+    {
+        
+        difficultyMultiplier = 1.4f;
+        //change color
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.75f);
+
+        GetComponent<SpriteRenderer>().color = Color.white;
+
+        yield return new WaitForSeconds(0.75f);
+        difficultyMultiplier = 1f;
+        buffaloSpeedSpike = null;
 
     }
     public float rayDistance = 0.5f;
@@ -23,31 +49,37 @@ public class Buffalo : Enemy
         transform.Translate(Vector3.right * direction * speed * Time.deltaTime * difficultyMultiplier);
     }
 
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (IsOnLayer(collision.gameObject, wallLayer))
-        {
-            Debug.Log($"Buffalo hit a wall: {collision.gameObject.name}");
-            Flip();
-        }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
-        {
+    /* private void OnTriggerEnter2D(Collider2D collision)
+     {
+         if (IsOnLayer(collision.gameObject, wallLayer))
+         {
+             Debug.Log($"Buffalo hit a wall: {collision.gameObject.name}");
+             Flip();
+         }
+         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+         {
 
-            TakeDamage(35f);
-        }
-    }*/
+             TakeDamage(35f);
+         }
+     }*/
 
+    public GameObject PlatForms;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the buffalo collided with the player
         if (IsOnLayer(collision.gameObject, wallLayer)  || IsOnLayer(collision.gameObject, forceFieldLayer))
         {
-            Debug.Log($"Buffalo hit a wall: {collision.gameObject.name}");
+          //  Debug.Log($"Buffalo hit a wall: {collision.gameObject.name}");
             Flip();
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet")) {
+            TakeDamage(15f);
 
-            TakeDamage(35f);
+            if (health <= 0)
+            {
+
+                PlatForms.SetActive(true);
+            }
         }
     }
     private bool IsOnLayer(GameObject obj, LayerMask layerMask)
@@ -57,7 +89,7 @@ public class Buffalo : Enemy
 
     private void Flip()
     {
-        print("buffalo flip");
+       // print("buffalo flip");
         movingRight = !movingRight;
 
         // Flip the sprite (if applicable)
@@ -76,7 +108,7 @@ public class Buffalo : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame

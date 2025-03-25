@@ -12,7 +12,7 @@ public class TriggerEnableGameObject : MonoBehaviour
     bool  letPowerUpSpawn;
 
     //if staticpowerup is not 0 then get staic power up
-    int staticPowerUpNo;
+    public int staticPowerUpNo;
     void Start()
     {
         
@@ -33,8 +33,10 @@ public class TriggerEnableGameObject : MonoBehaviour
         }
         if (letPowerUpSpawn)
         {
+            if (powerUpSpawnPosition != null) { 
             PowerUpSpawner.instance.SpawnPowerUps((Vector2)(powerUpSpawnPosition.transform.position), staticPowerUpNo);
-
+            
+         }
           
         }
 

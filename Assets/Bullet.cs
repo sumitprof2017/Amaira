@@ -12,7 +12,8 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-      //  BulletController.instance.RestoreBulletFunction(gameObject, 0f);
+       print("collision"+collision.gameObject.name);    
+       BulletController.instance.Restorebullet(gameObject);
     }
     // Update is called once per frame
     void Update()

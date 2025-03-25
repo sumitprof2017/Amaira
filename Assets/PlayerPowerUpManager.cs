@@ -28,6 +28,22 @@ public class PlayerPowerUpManager : MonoBehaviour
         StartCoroutine(InvulnerabilityPwerUpCoroutine(player, 5f, "Invulnerability"));
     }
 
+    public void ApplySaltPowerUp(GameObject player)
+    {
+        StartCoroutine(SaltPowerUp(player, 5f));
+
+    }
+
+    public IEnumerator SaltPowerUp(GameObject player, float duration)
+    {
+        player.GetComponent<BoxCollider2D>().sharedMaterial.friction = 1;
+        yield return new WaitForSeconds(duration);
+        player.GetComponent<BoxCollider2D>().sharedMaterial.friction = 0.2f;
+
+    }
+
+
+
     public IEnumerator InvulnerabilityPwerUpCoroutine(GameObject player,float duration,string layerName)
     {
         int invulnerabilityLayer = LayerMask.NameToLayer(layerName);

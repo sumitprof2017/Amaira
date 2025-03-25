@@ -100,6 +100,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing240.cs" />
+    <Compile Include="Assets\ParticleEffectFollowPlayer.cs" />
     <Compile Include="Assets\JumpButton.cs" />
     <Compile Include="Assets\Buffalo.cs" />
     <Compile Include="Assets\LeanTween\Testing\Scripts\LeanPool.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
+    <Compile Include="Assets\PowerUpS\Salt.cs" />
     <Compile Include="Assets\SortingLayerController.cs" />
     <Compile Include="Assets\TriggerForTutorial.cs" />
     <Compile Include="Assets\PowerUpSpawner.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="Assets\BackGroundController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
+    <Compile Include="Assets\BuffaloMainBoss.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
     <Compile Include="Assets\StateRelatedScripts\State.cs" />
     <Compile Include="Assets\HealthBarController.cs" />
