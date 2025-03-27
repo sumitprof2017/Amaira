@@ -5,7 +5,8 @@ using UnityEngine;
 public class monkey : Enemy
 {
     Rigidbody2D rb;
-    public float forceY = 10f;
+    public float forceY;
+   // public float forceY = 10f;
     public bool letMonkeyAttack = false;
     public override void Move()
     {
@@ -47,6 +48,16 @@ public class monkey : Enemy
     public void Shoot()
     {
         if (Vector2.Distance(firePosition.position, player.transform.position) < 5)
+        {
+
+            AudioController.instance.PlayerEnemyAttackAudio(audioCliptoAttack);
+            BulletController.instance.ShootBulletFromEnemyToPlayer(firePosition, player.transform, 2, bananaImage);
+        }
+    }
+
+    public void ShootAsBoss()
+    {
+        if (Vector2.Distance(firePosition.position, player.transform.position) < 10)
         {
 
             AudioController.instance.PlayerEnemyAttackAudio(audioCliptoAttack);

@@ -292,6 +292,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public LayerMask enemyLayer;
+    public LayerMask bulletLayer;
 
     private bool isShooting = false;
     private float shootCooldown = 0.05f;
@@ -420,6 +421,21 @@ public class PlayerMovement : MonoBehaviour
             healthEventSo.InvokeEvent(health,true);
            // SceneManager.LoadScene("FirstScene");
         }
+        if (IsOnLayer(collision.gameObject, bulletLayer))
+        {
+            Debug.Log($"Enemy layer is");
+            health--;
+
+            healthEventSo.InvokeEvent(health,true);
+           // SceneManager.LoadScene("FirstScene");
+        }
+    }
+
+    public void DecreasePlayerHealth()
+    {
+        health--;
+
+        healthEventSo.InvokeEvent(health, true);
     }
         
     void Flip()

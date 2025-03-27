@@ -34,6 +34,11 @@ public class PlayerPowerUpManager : MonoBehaviour
 
     }
 
+    public void DecreaseHealthFromMushroom(GameObject player, float duration)
+    {
+        player.GetComponent<PlayerMovement>().DecreasePlayerHealth();
+    }
+
     public IEnumerator SaltPowerUp(GameObject player, float duration)
     {
         player.GetComponent<BoxCollider2D>().sharedMaterial.friction = 1;

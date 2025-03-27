@@ -571,6 +571,8 @@ MonoBehaviour:
   speedBoost: {fileID: 5281124836630927576, guid: 8f1bd568070eb7745908e4b024bd3835, type: 3}
   invisibilty: {fileID: 6289409479582672022, guid: fe90bff1f08e97f4d9630ecdb3c0a5ab, type: 3}
   invulnurable: {fileID: 1459403207831549622, guid: dc27c3ee7d7d05a48a6815f0611feb6d, type: 3}
+  salt: {fileID: 0}
+  mushroom: {fileID: 0}
 --- !u!4 &28042499
 Transform:
   m_ObjectHideFlags: 0
@@ -2215,6 +2217,7 @@ MonoBehaviour:
   enemyToActivate: {fileID: 1481335493}
   powerUpSpawnPosition: {fileID: 1431798794}
   letPowerUpSpawn: 1
+  staticPowerUpNo: 0
 --- !u!212 &253346945
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4246,7 +4249,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1e-45, z: 0, w: 1}
-  m_LocalPosition: {x: -16.7, y: -3.38, z: -10}
+  m_LocalPosition: {x: 77.8, y: -3.38, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5927,6 +5930,7 @@ MonoBehaviour:
   enemyToActivate: {fileID: 1578057786}
   powerUpSpawnPosition: {fileID: 0}
   letPowerUpSpawn: 0
+  staticPowerUpNo: 0
 --- !u!212 &730482843
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6058,6 +6062,7 @@ MonoBehaviour:
   enemyToActivate: {fileID: 1713792789}
   powerUpSpawnPosition: {fileID: 903630236}
   letPowerUpSpawn: 1
+  staticPowerUpNo: 0
 --- !u!212 &755433509
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6507,6 +6512,7 @@ MonoBehaviour:
   enemyToActivate: {fileID: 474535772}
   powerUpSpawnPosition: {fileID: 0}
   letPowerUpSpawn: 0
+  staticPowerUpNo: 0
 --- !u!212 &780587984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11805,6 +11811,7 @@ MonoBehaviour:
   enemyToActivate: {fileID: 1363547488}
   powerUpSpawnPosition: {fileID: 1427308200}
   letPowerUpSpawn: 1
+  staticPowerUpNo: 0
 --- !u!212 &1056262281
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16717,7 +16724,9 @@ MonoBehaviour:
   forceFieldLayer:
     serializedVersion: 2
     m_Bits: 0
+  player: {fileID: 0}
   rayDistance: 0.5
+  PlatForms: {fileID: 0}
 --- !u!212 &1363547490
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16922,7 +16931,7 @@ Transform:
   m_GameObject: {fileID: 1369757364}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1e-45, z: 0, w: 1}
-  m_LocalPosition: {x: -16.7, y: -3.38, z: -10}
+  m_LocalPosition: {x: 77.8, y: -3.38, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20525,6 +20534,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 0
   electricity: {fileID: 2106469319}
   dashForce: 12
   dashCooldown: 1
@@ -21267,6 +21279,7 @@ MonoBehaviour:
   enemyToActivate: {fileID: 923230858}
   powerUpSpawnPosition: {fileID: 0}
   letPowerUpSpawn: 0
+  staticPowerUpNo: 0
 --- !u!212 &1689412410
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25531,6 +25544,7 @@ MonoBehaviour:
   enemyToActivate: {fileID: 428570334}
   powerUpSpawnPosition: {fileID: 347274554}
   letPowerUpSpawn: 1
+  staticPowerUpNo: 0
 --- !u!212 &2010485232
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27246,7 +27260,7 @@ Transform:
   m_GameObject: {fileID: 4749793152449130611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.7, y: -3.38, z: 0}
+  m_LocalPosition: {x: 77.8, y: -3.38, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27296,6 +27310,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 0
   electricity: {fileID: 0}
   dashForce: 12
   dashCooldown: 1
@@ -27329,7 +27346,7 @@ Transform:
   m_GameObject: {fileID: 3523615318952393770}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.4434, y: 4.18, z: 0}
+  m_LocalPosition: {x: -20.4434, y: 1.39, z: 0}
   m_LocalScale: {x: 0.8830436, y: 0.7321683, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
