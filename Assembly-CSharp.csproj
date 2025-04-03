@@ -83,6 +83,7 @@
     <Compile Include="Assets\TriggerEnableGameObject.cs" />
     <Compile Include="Assets\RollingBoulder1.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
+    <Compile Include="Assets\2D Tactics Character Animated\Assets\Scripts\LookAtCamera.cs" />
     <Compile Include="Assets\monkey.cs" />
     <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
@@ -128,10 +129,12 @@
     <Compile Include="Assets\TriggerPlayerDataSave.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing246.cs" />
     <Compile Include="Assets\BackGroundController.cs" />
+    <Compile Include="Assets\2D Tactics Character Animated\Assets\Scripts\AnimationController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
     <Compile Include="Assets\BuffaloMainBoss.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
+    <Compile Include="Assets\VultureAttack.cs" />
     <Compile Include="Assets\StateRelatedScripts\State.cs" />
     <Compile Include="Assets\HealthBarController.cs" />
     <Compile Include="Assets\RollingBoulder.cs" />
@@ -153,6 +156,7 @@
     <Compile Include="Assets\Scriptss\PlatforMovement.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\DifficultyManager.cs" />
+    <Compile Include="Assets\SpinningWheel.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\BelowGroundCheck.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingMaxTweens.cs" />
