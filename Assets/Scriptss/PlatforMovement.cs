@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlatforMovement : MonoBehaviour
 {
+    //normal 0.58 movedistance 10  offset 0.1
     public float speed;
     public float moveDistance;
 

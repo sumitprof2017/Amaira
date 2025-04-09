@@ -80,6 +80,7 @@
     <Compile Include="Assets\LeanTween\Testing\TestingDescr.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingColorTweening.cs" />
     <Compile Include="Assets\Yeti.cs" />
+    <Compile Include="Assets\WaterBotle.cs" />
     <Compile Include="Assets\TriggerEnableGameObject.cs" />
     <Compile Include="Assets\RollingBoulder1.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
     <Compile Include="Assets\Scriptss\ScriptableObjects\JsonSystem\SaveSystem.cs" />
+    <Compile Include="Assets\Fire.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing240.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\DashButton.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
+    <Compile Include="Assets\TimerScript.cs" />
     <Compile Include="Assets\PowerUp\HealthBoost.cs" />
     <Compile Include="Assets\PowerUpS\Invulnurability.cs" />
     <Compile Include="Assets\Scriptss\PlatforMovement.cs" />

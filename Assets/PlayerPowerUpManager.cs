@@ -39,6 +39,14 @@ public class PlayerPowerUpManager : MonoBehaviour
         player.GetComponent<PlayerMovement>().DecreasePlayerHealth();
     }
 
+    public void TimeIncrease()
+    {
+        if(TimerScript.instance != null)
+        {
+            TimerScript.instance.RestartTimer();
+        }
+    }
+
     public IEnumerator SaltPowerUp(GameObject player, float duration)
     {
         player.GetComponent<BoxCollider2D>().sharedMaterial.friction = 1;
