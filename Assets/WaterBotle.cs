@@ -16,7 +16,7 @@ public class WaterBotle : PowerUp
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            gameObject.SetActive(false);
             collision.gameObject.GetComponent<PlayerPowerUpManager>().TimeIncrease();
         }
     }
