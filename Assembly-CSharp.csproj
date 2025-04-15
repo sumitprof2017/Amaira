@@ -70,6 +70,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
     <Compile Include="Assets\Scriptss\ScriptableObjects\PlayerDetailsSO.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
+    <Compile Include="Assets\SpinningKnife.cs" />
     <Compile Include="Assets\SpeedBoost.cs" />
     <Compile Include="Assets\DialogueBox.cs" />
     <Compile Include="Assets\PowerUpS\PowerUpFactory.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="Assets\BelowGroundCheck.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingMaxTweens.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingIssue.cs" />
+    <Compile Include="Assets\LeanTweenPath.cs" />
     <Compile Include="Assets\StateRelatedScripts\GroundState.cs" />
     <Compile Include="Assets\Singletons\MainMenuController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
