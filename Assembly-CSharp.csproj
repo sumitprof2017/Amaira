@@ -133,6 +133,7 @@
     <Compile Include="Assets\LeanTween\Testing\Testing246.cs" />
     <Compile Include="Assets\BackGroundController.cs" />
     <Compile Include="Assets\2D Tactics Character Animated\Assets\Scripts\AnimationController.cs" />
+    <Compile Include="Assets\PoisonParticleCollision.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
     <Compile Include="Assets\BuffaloMainBoss.cs" />

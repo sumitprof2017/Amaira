@@ -18,11 +18,33 @@ public class Fire : Enemy
     public float moveSpeed = 2.0f; // Speed of movement in Y
 
     private Vector3 initialPosition;
+    
+    public float targetScaleY = 2f;
+    public float duration = 1f;
+    public float scaleDuration = 0.5f;
+    public float moveDuration = 0.5f;
 
     void Start()
     {
         initialPosition = transform.position;
-        StartCoroutine(ScaleAndMoveLoop());
+
+        // Set up a ping-pong scale animation on the Y-axis
+        Vector3 originalScale = transform.localScale;
+        Vector3 targetScale = new Vector3(originalScale.x, originalScale.y * 2f, originalScale.z);
+
+        Vector3 originalPos = transform.position;
+        Vector3 targetPos = new Vector3(originalPos.x, originalPos.y+0.5f, originalPos.z); // Assuming starting Y is 20
+
+        // Scale Y up and down in loop
+        LeanTween.scaleY(gameObject, targetScale.y, scaleDuration)
+                 .setEaseInOutSine()
+                 .setLoopPingPong();
+
+        // Move Y up and down in loop
+        LeanTween.moveY(gameObject, targetPos.y, moveDuration)
+                 .setEaseInOutSine()
+                 .setLoopPingPong();
+        //StartCoroutine(ScaleAndMoveLoop());
     }
 
     IEnumerator ScaleAndMoveLoop()
