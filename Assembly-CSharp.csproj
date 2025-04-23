@@ -157,8 +157,10 @@
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
     <Compile Include="Assets\TimerScript.cs" />
     <Compile Include="Assets\PowerUp\HealthBoost.cs" />
+    <Compile Include="Assets\LaserParent.cs" />
     <Compile Include="Assets\PowerUpS\Invulnurability.cs" />
     <Compile Include="Assets\Scriptss\PlatforMovement.cs" />
+    <Compile Include="Assets\FadeScript.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\DifficultyManager.cs" />
     <Compile Include="Assets\SpinningWheel.cs" />

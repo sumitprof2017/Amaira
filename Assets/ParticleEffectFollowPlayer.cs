@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleEffectFollowPlayer : MonoBehaviour
 {
     public Transform player;
-    private float threshold = 5f; // How far the player moves before updating snow position
+    public float threshold = 3f; // How far the player moves before updating snow position
 
     void Update()
     {
